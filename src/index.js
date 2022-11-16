@@ -1,17 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react"
+import ReactDOM from "react-dom"
+import { BrowserRouter, Routes, Route} from "react-router-dom"
+import About from "./functionBased/pages/About"
+import NotMatch from "./functionBased/pages/NotMatch"
+import Navbar from "./functionBased/components/Navbar"
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// const element = <h1>Hello from Create React App</h1>
+// ReactDOM.render(element, document.getElementById("root"))
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+import TodoContainer from "./functionBased/components/TodoContainer"
+
+//stylesheet
+import "./functionBased/App.css" 
+// import { MyContext } from "./context"
+
+ReactDOM.render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <Navbar/>
+            <Routes>
+                <Route path="/" element={<TodoContainer/>}/>
+                <Route path="about/*" element={<About/>}/>
+                <Route path="*" element={<NotMatch/>}/>
+            </Routes>
+        </BrowserRouter>
+        </React.StrictMode>, 
+    document.getElementById("root"))
+
+// ReactDOM.render(
+//     <MyContext>
+//         <TodoContainer />
+//     </MyContext>,
+//     document.getElementById("root")
+// )
